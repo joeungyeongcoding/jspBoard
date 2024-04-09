@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import javax.naming.NamingException;
 
 import jspBoard.dao.DBConnect;
+import jspBoard.dao.JBoardCommentDao;
 import jspBoard.dao.JBoardDao;
 import jspBoard.dto.BDto;
+import jspBoard.dto.CDto;
 
 public class DbWorks { 
 	private int limitPage;
@@ -98,6 +100,23 @@ public class DbWorks {
 		}
 		return list;
 	}
+	
+	//코멘트 목록보기 
+	public ArrayList<CDto> getCommentList(String jboard_id) {
+		int jid = Integer.parseInt(jboard_id);
+		ArrayList<CDto> list = null;
+		try {
+			conn = db.getConnection();
+			JBoardCommentDao cdao = new JBoardCommentDao(conn);
+			list = cdao.selectDB(jid);
+		}catch (SQLException | NamingException e) {
+			e.printStackTrace();
+		} finally {
+			db.closeConnection();
+		}
+		return list;
+	}
+	
 	
 	//update (조회수 증가)
 	public void getUpdate(int count) {   

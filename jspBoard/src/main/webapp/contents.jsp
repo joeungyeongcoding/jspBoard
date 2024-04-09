@@ -10,6 +10,7 @@
    HttpSession sess2 = request.getSession(true);
    Cookie[] cooks2 = request.getCookies();
 
+   String userid = (String) sess2.getAttribute("userid");
    String id = request.getParameter("id"); 
    String cpg = request.getParameter("cpg");
    if(cpg == null) cpg = "1";
@@ -69,6 +70,96 @@
           </div>
           
        </div>
-    </section>        
+       
+          
+       <link rel="stylesheet" href="css/summernote-bs4.css">
+       <script src="js/summernote-bs4.js"></script>
+       <script>
+            $(function(){
+              $("#comment").summernote({
+                  width:'85%',
+                  height:'100px',
+                  toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrouth','superscript', 'subscript']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']]
+                  ] 
+               });
+            }); 
 
+       </script>
+       
+       <ul class="list-group list-group-flush comments">
+          <%@ include file="comments_list.jsp" %>
+          <%@ include file="comments_write.jsp" %>          
+       </ul>
+    </section>        
+    <script>
+      $(function(){
+    	  $(".cdel").click(function(e){
+    		  e.preventDefault();
+    		  const $userid = $(this).data("userid");
+    		  if($userid == "<%=userid%>" || "<%=userid%>" == "admin"){
+    			  if(confirm("정말로 삭제하시겠습니까?")){
+    			     const $link = $(this).attr("href");
+    			     location.href=$link+"&userid="+$userid;
+    			  }   
+    		  }else{
+    			  alert("삭제할 권한이 없습니다.");
+    			  return;
+    		  }
+    	  });
+    	  $(".cedit").click(function(e){
+    		 e.preventDefault();
+    		 let $userid, $num, username, comment, wdate, id, $form;
+
+    		 $userid = $(this).data("userid");
+    		 $num = $(".cedit").index(this);
+    		// alert($num);
+             username = $('.cusername').eq($num).text();
+             comment = $('.ccomment').eq($num).html();
+             id = $(".cid").eq($num).val();
+             
+             $form = '<form name="commentForm" id="commentform'+$num+'"'+ 
+                         'class="d-flex w-100 bg-white mt-3" method="post" action="./updatecomment">'+
+                         '<div class="form-box">'+
+                         '<div class="mb-2">'+
+                         '<label>이름 : </label>'+
+                         '<input type="text" name="username"'+
+                         'value="'+username+'">'+
+                         '</div>'+
+                         '<div class="d-flex">'+
+                         '<textarea name="comment" class="c_comment">'+comment+'</textarea>'+
+                         '<button type="submit" class="comment-btn">댓글수정</button>'+
+                         '</div></div>'+    
+                         '<input type="hidden" name="id" value="'+id+'"></form>';
+             
+    		 if($userid == "<%=userid%>" || "<%=userid%>" == "admin"){
+    			 let contDiv = $("#commentform"+$num);
+    			 //console.dir(contDiv);
+    			 if(contDiv.length > 0){
+    				 contDiv.remove();
+    			 }else{
+    			    //$('.editform').eq($num).html($form);
+    			    $(".editform").eq($num).append($form);
+    			    $('.c_comment').summernote({
+                       width:'85%',
+                       height:'100px',
+                       toolbar: [
+                         ['style', ['bold', 'italic', 'underline', 'clear']],
+                         ['font', ['strikethrouth','superscript', 'subscript']],
+                         ['color', ['color']],
+                         ['para', ['ul', 'ol', 'paragraph']]
+                       ] 
+    			   });
+    			}   
+    		 }else{
+                 alert("수정할 권한이 없습니다.");
+                 return;
+             }
+    		 
+    	  });
+      });
+    </script>
 <%@ include file="inc/footer.jsp" %>  

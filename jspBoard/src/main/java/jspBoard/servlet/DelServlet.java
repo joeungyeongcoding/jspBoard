@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jspBoard.dao.DBConnect;
 import jspBoard.dao.JBoardDao;
+import jspBoard.dao.JBoardImgDao;
 
 
 @WebServlet("/del")
@@ -27,6 +28,7 @@ public class DelServlet extends HttpServlet {
 
         Connection conn = null;
         DBConnect db = new DBConnect();
+        JBoardImgDao idao = new JBoardImgDao(conn);
         
         int result = 0;
 		try {

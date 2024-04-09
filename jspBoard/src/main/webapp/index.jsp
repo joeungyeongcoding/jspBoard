@@ -14,7 +14,10 @@
     HttpSession sess = request.getSession(true);
     String sname = request.getParameter("searchname");  //검색
     String svalue = request.getParameter("searchvalue");
-     
+    ServletContext cont = getServletContext();
+ 
+    TrashFile trf = new TrashFile(cont);
+
     /* 페이징을 위한 변수 */
     int pg; //받아올 현재 페이지 번호
     int allCount; //1. 전체 개시글 수 
@@ -108,12 +111,16 @@
                     		  String reicon = "<i class=\"ri-corner-down-right-line\"></i>";
                     	      styleDepth = "<span style='display:inline-block;width:"+padding+"'></span>"+reicon+" ";
                     	  }
+                    	  String commentHit = "";
+                    	  if(chit > 0) {
+                    		  commentHit = " ("+chit+")";
+                    	  }
                    %>    
                        <tr>
                            <td class="text-center"><%=num %></td>
                            <% if(sess.getAttribute("mid") != null){ %>
                            <td><a href="contents.jsp?id=<%=id%>&cpg=<%=pg%>">
-                               <%=styleDepth%><%=title %>
+                               <%=styleDepth%><%=title %><%=commentHit %>
                             </a><span></span>
                             <!-- 
                                <i class="ri-file-image-fill"></i>
@@ -123,7 +130,7 @@
                             </td>
                            <% }else{ %>
                             <td>
-                               <a href="javascript:void(0)"><%=styleDepth%><%=title %>
+                               <a href="javascript:void(0)"><%=styleDepth%><%=title %><%=commentHit %>
                                </a><span></span>
                             <!-- 
                                <i class="ri-file-image-fill"></i>

@@ -136,13 +136,15 @@ span.space{
     background:#fff;
     padding:40px;
 }
+.listbox{
+    border-bottom:1px solid #ddd;
+}
 .listbox h1{
     font-size:25px;
 }
 .listbox .table{
     border-bottom:1px solid #dee2e6;
 }
-
 .listbox th{
     text-align:center;
     position:relative;
@@ -182,7 +184,35 @@ span.space{
     display:inline-block;
     width:20px;
 }
-
+.form-box {
+	width:100%;
+}
+.comment-btn{
+    width:15%;
+    background:#434c53;
+    color:#fff;
+}
+.comments .btn-box{
+   position:relative;
+   cursor:pointer;
+}
+.edel{
+    border:1px solid #434c53;
+    width:80px;
+    padding:10px 15px;
+    background:#fff;
+    position:absolute;
+    z-index:100;
+    right:-50px;
+    display:none;
+}
+.edel a{
+    display:block;
+    text-align:center;
+    margin-top:5px;
+    margin-bottom:5px; 
+}
+/* 페이징 */
 .paging{
    list-style-type:none;
    display:flex;
@@ -205,7 +235,7 @@ span.space{
     text-decoration:none;
 }
 
-
+/** 검색 **/
 .searchform{
     width:40%;
     margin-left:auto;
@@ -236,7 +266,7 @@ span.space{
     max-width: 125px;
 }
 
-
+/** 글쓰기 **/
 label.form-label {
     display: inline-block;
     width: 100px;
@@ -271,7 +301,24 @@ footer{
 	background:#ddd;
 	border-radius:10px;
 	margin: 30px auto;
-
 }
-
+.commentform {
+	margin-top:30px;
+}
+/*********파일 첨부**********/
+.filebo .upload {
+	display: inline-block;
+	height:40px;
+	padding: 0 10px;
+	vertical-align:middle;
+	border:1px solid #ddd;
+	color:#999;
+	width:50%;
+}
+.filebox label {
+	display:inline-block;
+	padding:10px 20px;
+	color:#fff;
+	
+}
 
