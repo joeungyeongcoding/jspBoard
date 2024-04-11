@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="true" %>
-<%@ page  import="java.util.ArrayList, 
-                  jspBoard.dto.BDto,
+<%@ page  import="java.util.ArrayList,jspBoard.dto.BDto,
                   jspBoard.service.*,
                   java.sql.Timestamp,
                   java.text.SimpleDateFormat,

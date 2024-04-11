@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="jspBoard.service.*, 
-                jspBoard.dto.BDto,
+<%@ page import="jspBoard.service.*,jspBoard.dto.BDto,
                 java.text.SimpleDateFormat" %>   
 <%@ include file="inc/header.jsp" %>
 <script src="js/summernote-bs4.js"></script>

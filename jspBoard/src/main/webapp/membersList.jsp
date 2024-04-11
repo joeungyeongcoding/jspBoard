@@ -3,8 +3,7 @@
 <%@ page  import="java.sql.Connection, 
                   java.util.ArrayList, 
                   
-                  jspBoard.dao.MembersDao, 
-                  jspBoard.dto.MDto,
+                  jspBoard.dao.MembersDao,jspBoard.dto.MDto,
                   
                   java.sql.Timestamp,
                   java.text.SimpleDateFormat,

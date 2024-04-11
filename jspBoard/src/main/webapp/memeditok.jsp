@@ -4,7 +4,7 @@
 <%@ page import="java.sql.*, jspBoard.dao.JBoardDao" %> 
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="db" class="jspBoard.dao.DBConnect" scope="page"/>
-<jsp:useBean id="bDto" class="jspBoard.dto.BDto" scope="page" />
+<jsp:useBean id="bDto" class=jspBoard.dto.BDto" scope="page" />
 <jsp:setProperty name="bDto" property="*" /> 
 <%
    String id = request.getParameter("id");

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, jspBoard.dao.*, jspBoard.dto.BDto,java.text.SimpleDateFormat" %>    
+<%@ page import="java.sql.*, jspBoard.dao.*,jspBoard.dto.BDto,java.text.SimpleDateFormat" %>    
 <%@ include file="inc/header.jsp" %>
 <%@ include file="inc/aside.jsp" %>
 <% 
