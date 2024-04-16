@@ -21,7 +21,7 @@
     int pg; //받아올 현재 페이지 번호
     int allCount; //1. 전체 개시글 수 
     int listCount = 10; //2. 한 페이지에 보일 목록 수
-    int pageCount = 10; //3. 한 페이지에 보일 페이지 수  
+    int pageCount = 5; //3. 한 페이지에 보일 페이지 수  
     int limitPage; //4. 쿼리문으로 보낼 시작번호
      
     String cpg = "1";
@@ -37,7 +37,7 @@
     allCount = db.getAllSelect();
     
     //현재페이지, 전체글수, 페이지수, 글목록 수로 Paging 클래스 호출
-    Paging myPage = new Paging(pg, allCount, pageCount, listCount);
+    Paging myPage = new Paging(pg, allCount, listCount, pageCount);
 
     ArrayList<BDto> list = null;
     if(sname == null || sname.trim().isEmpty()){    
